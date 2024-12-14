@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SolidRoots Properties - Residential Details</title>
+  <link
+    rel="shortcut icon"
+    href="https://i.pinimg.com/736x/30/bd/b7/30bdb7888e4126d0638d9c274417faac.jpg"
+  />
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+<style>
+  body {
+    background-color: #f5f5f5;
+  }
+  .navbar {
+    background-color: #124824;
+  }
+  .navbar-brand, .nav-link .active{
+    color: #fff !important;
+  }
+  .table-dark {
+    background-color: #124824 !important;
+  }
+  .table-dark th {
+    color: #b78509 !important;
+    cursor: pointer;
+  }
+  .table-dark th:hover {
+    text-decoration: underline;
+  }
+  .btn-primary {
+    background-color: #124824;
+    border-color: #124824;
+  }
+  .btn-primary:hover {
+    background-color: #0f3b1f;
+    border-color: #0f3b1f;
+  }
+  .btn-success {
+    background-color: #b78509;
+    border-color: #b78509;
+  }
+  .btn-success:hover {
+    background-color: #946705;
+    border-color: #946705;
+  }
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+  }
+  .property-image {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+  }
+  #scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    z-index: 1000;
+    background-color: #124824;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+  }
+  #scrollToTopBtn:hover {
+    background-color: #0f3b1f;
+  }
+  .thumbnail {
+  width: 100px; /* Set desired thumbnail width */
+  height: 100px; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure proper fit */
+  margin: 5px; /* Add spacing between thumbnails */
+  border-radius: 5px; /* Optional: rounded corners */
+  border: 1px solid #ccc; /* Optional: border around the images */
+}
+
+</style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <div class="container">
+      <!-- Logo Section -->
+      <a class="navbar-brand" href="adash.html">
+        <img src="https://i.pinimg.com/736x/30/bd/b7/30bdb7888e4126d0638d9c274417faac.jpg" alt="SolidRoots Properties" style="height: 80px;">
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="adash.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="create_land.html"><i class="fas fa-map"></i> Land Properties</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="create_commercial.html"><i class="fas fa-building"></i> Commercial Properties</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="create_residential.html"><i class="fas fa-home"></i> Residential Sales</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="create_retail.html"><i class="fas fa-door-open"></i> Retail Properties</a>
+          </li>
+          
+          <!-- <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle active"
+              href="#"
+              id="userDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="fas fa-user-circle"></i> Profile
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="userDropdown"
+            >
+              <li>
+                <a class="dropdown-item" href="admin.html"><i class="fas fa-user-cog"></i> Profile Management</a>
+              </li>
+              <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container mt-5">
+    <h2 id="formTitle">Add Residential Property</h2>
+    <div class="card my-4" style="padding: 30px;">
+ <!-- Form for adding or editing residential properties -->
+ <form id="residentialForm" enctype="multipart/form-data">
+  <input type="hidden" id="propertyId">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="propertyname">Property Name</label>
+      <input type="text" class="form-control" id="propertyname" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="location">Location</label>
+      <input type="text" class="form-control" id="location" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="size">Size</label>
+      <input type="text" class="form-control" id="size" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="price">Price</label>
+      <input type="text" class="form-control" id="price" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="category">Category</label>
+      <select class="form-control" id="category" name="category" required>
+        <option value="Commercial">Commercial</option>
+        <option value="Residential">Residential</option>
+        <option value="Letting">Letting</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="status">Status</label>
+      <select class="form-control" id="status" name="status" required>
+        <option value="For Sale">For Sale</option>
+        <option value="For Rent">For Rent</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="agent">Agent (seperated with commas)</label>
+      <input type="text" class="form-control" id="agent" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="availability" class="form-label">Availability</label>
+      <select class="form-control" id="availability" name="availability" required>
+        <option value="Available">Available</option>
+        <option value="Not Available">Not Available</option>
+      </select>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="amenities">Amenities (seperated with commas)</label>
+      <input type="text" class="form-control" id="amenities" required>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" rows="3" required></textarea>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="images">Images</label>
+      <input type="file" class="form-control" id="images" name="images" multiple>
+    </div>
+    <button type="submit" class="btn btn-primary col-md-12" style="margin-top: 20px;">Submit</button>
+  </div>
+</form>
+    </div>
+   
+
+    <!-- Table to display residential properties -->
+    <h3 class="mt-5">Residential Properties List</h3>
+    <div class="card p-3" >
+      <table class="table table-bordered" id="propertyTable">
+        <thead  class="table-dark">
+          <tr>
+            <th>Property Name</th>
+            <th>Location</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Status</th>
+            
+            <th>Availability</th>
+            <th>Amenities</th>
+            <th>Agent</th>
+            <th>Description</th>
+            <th>Images</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <nav>
+        <ul id="pagination" class="pagination justify-content-center"></ul>
+      </nav>
+    </div>
+    
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <button id="scrollToTopBtn" onclick="scrollToTop()">↑</button>
+  <script>
+    let currentPage = 1;
+    const rowsPerPage = 5;
+
+    // Fetch and display paginated residential properties
+    function fetchResidentialProperties(page = 1) {
+      fetch('http://localhost:3000/api/residentialproperties')
+        .then(response => response.json())
+        .then(properties => {
+          const table = document.getElementById('propertyTable').getElementsByTagName('tbody')[0];
+          const pagination = document.getElementById('pagination');
+          table.innerHTML = '';
+          pagination.innerHTML = '';
+
+          const start = (page - 1) * rowsPerPage;
+          const end = start + rowsPerPage;
+          const paginatedProperties = properties.slice(start, end);
+
+          paginatedProperties.forEach(property => {
+            const row = `<tr>
+              <td>${property.propertyname}</td>
+              <td>${property.location}</td>
+              <td>${property.price}</td>
+              <td>${property.category}</td>
+              <td>${property.status}</td>
+               <td>${property.availability}</td>
+              <td>${property.amenities}</td>
+              <td>${property.agent}</td>
+              <td>${property.description}</td>
+              <td>${property.images.map(img => `<img src="/${img}" alt="Property Image" class="thumbnail">`).join(' ')}</td>
+              <td>
+                <button onclick="editProperty('${property._id}')" class="btn btn-warning btn-sm">Edit</button>
+                <button onclick="deleteProperty('${property._id}')" class="btn btn-danger btn-sm">Delete</button>
+              </td>
+            </tr>`;
+            table.innerHTML += row;
+          });
+
+          // Create pagination buttons
+          const totalPages = Math.ceil(properties.length / rowsPerPage);
+          for (let i = 1; i <= totalPages; i++) {
+            const button = document.createElement('button');
+            button.textContent = i;
+            button.className = 'btn btn-sm btn-primary mx-1';
+            if (i === page) button.classList.add('active');
+            button.onclick = () => {
+              currentPage = i;
+              fetchResidentialProperties(i);
+            };
+            pagination.appendChild(button);
+          }
+        });
+    }
+
+    fetchResidentialProperties();
+
+    // Edit residential property
+    function editProperty(id) {
+      fetch(`http://localhost:3000/api/residentialproperties/${id}`)
+        .then(response => response.json())
+        .then(property => {
+          document.getElementById('propertyId').value = property._id;
+          document.getElementById('propertyname').value = property.propertyname;
+          document.getElementById('location').value = property.location;
+          document.getElementById('size').value = property.size;
+          document.getElementById('price').value = property.price;
+          document.getElementById('category').value = property.category;
+          document.getElementById('status').value = property.status;
+          document.getElementById('availability').value = property.availability;
+          document.getElementById('agent').value = property.agent;
+          document.getElementById('amenities').value = property.amenities;
+          document.getElementById('description').value = property.description;
+          document.getElementById('formTitle').textContent = "Edit Residential Property";
+        });
+    }
+
+    // Handle form submission
+    document.getElementById('residentialForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const id = document.getElementById('propertyId').value;
+      const method = id ? 'PUT' : 'POST';
+      const url = `http://localhost:3000/api/residentialproperties${id ? '/' + id : ''}`;
+
+      const formData = new FormData();
+      formData.append('propertyname', document.getElementById('propertyname').value);
+      formData.append('location', document.getElementById('location').value);
+      formData.append('size', document.getElementById('size').value);
+      formData.append('price', document.getElementById('price').value);
+      formData.append('category', document.getElementById('category').value);
+      formData.append('status', document.getElementById('status').value);
+      formData.append('availability', document.getElementById('availability').value);
+      formData.append('agent', document.getElementById('agent').value);
+      formData.append('amenities', document.getElementById('amenities').value);
+      formData.append('description', document.getElementById('description').value);
+      const images = document.getElementById('images').files;
+      for (let i = 0; i < images.length; i++) {
+        formData.append('images', images[i]);
+      }
+
+      fetch(url, {
+        method: method,
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert('Property saved successfully!');
+        document.getElementById('residentialForm').reset();
+        fetchResidentialProperties(currentPage);
+      })
+      .catch(error => {
+        console.error('Error submitting the form:', error);
+        alert('Error submitting the form. Please check the console for more details.');
+      });
+    });
+
+    // Delete residential property
+    function deleteProperty(id) {
+      fetch(`http://localhost:3000/api/residentialproperties/${id}`, { method: 'DELETE' })
+        .then(response => {
+          alert('Property deleted successfully!');
+          fetchResidentialProperties(currentPage);
+        })
+        .catch(error => {
+          console.error('Error deleting property:', error);
+          alert('Error deleting property. Please check the console for more details.');
+        });
+    }
+
+    // Scroll to top functionality
+    window.onscroll = function() {
+      const btn = document.getElementById('scrollToTopBtn');
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        btn.style.display = 'block';
+      } else {
+        btn.style.display = 'none';
+      }
+    };
+
+    function scrollToTop() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+</script>
+
+</body>
+</html>

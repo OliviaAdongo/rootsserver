@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolidRoots Properties</title>
+    <link rel="shortcut icon" href="/assets/logo/solidroots properties logo c3-2.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        a {
+            font-weight: 500;
+            color: #b78509;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: #124824;
+        }
+
+        .navbar-dark {
+    background-color: #124824; /* Dark green background */
+    padding: 1rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for elevation */
+}
+
+/* Logo Styling */
+.navbar-brand img {
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3)); /* Adds depth to the logo */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.navbar-brand img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Brand Text Styling */
+.navbar-dark .navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+/* Nav Link Styles */
+.navbar-dark .nav-link {
+    color: rgba(255, 255, 255, 0.85); /* Light white for readability */
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 5px 15px; /* Adds spacing between links */
+    padding: 5px 10px; /* Slight padding for spacing */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Nav Link Hover Styles */
+.navbar-dark .nav-link:hover {
+    color: #fff;
+    background-color: #b78509; /* Gold background on hover */
+    border-radius: 5px; /* Rounded corners for hover effect */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adds depth */
+}
+
+/* Navbar Toggler Styling */
+.navbar-toggler {
+    border: none; /* Remove border around toggler */
+}
+
+.navbar-toggler-icon {
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)); /* Subtle shadow for icon */
+}
+
+        h1 {
+            color: #124824;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #124824;
+            border-color: #124824;
+        }
+
+        .btn-primary:hover {
+            background-color: #b78509;
+            border-color: #b78509;
+        }
+
+        .btn-secondary {
+            background-color: #b78509;
+            border-color: #b78509;
+        }
+
+        .btn-secondary:hover {
+            background-color: #124824;
+            border-color: #124824;
+        }
+
+        .table {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .table thead {
+            background-color: #124824;
+            color: white;
+        }
+
+        .table thead th {
+            text-align: center;
+        }
+
+        .form-control, .form-select {
+            border-color: #b78509;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #124824;
+            box-shadow: 0 0 5px rgba(18, 72, 36, 0.5);
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #124824;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                    <img src="https://i.pinimg.com/736x/30/bd/b7/30bdb7888e4126d0638d9c274417faac.jpg" alt="Logo" width="125" height="77">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="adash.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="commercialt.html">Commercial Property Details</a></li>
+                    <li class="nav-item"><a class="nav-link" href="atable.html">Residential Property Details</a></li>
+                    <li class="nav-item">                    <a class="nav-link" href="create_land.html">Land Details</a>
+</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Commercial Properties</h1>
+        <form id="propertyForm" class="mb-4 p-4 bg-light rounded shadow-sm">
+            <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="location" name="location" required>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="text" class="form-control" id="price" name="price" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label for="category" class="form-label">Category</label>
+                    <select class="form-select" id="category" name="category" required>
+                        <option value="Residential">Residential</option>
+                        <option value="Commercial">Commercial</option>
+                    </select>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-select" id="status" name="status" required>
+                        <option value="For Sale">For Sale</option>
+                        <option value="For Rent">For Rent</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label for="availability" class="form-label">Availability</label>
+                    <select class="form-select" id="availability" name="availability">
+                        <option value="Available">Available</option>
+                        <option value="Not Available">Not Available</option>
+                    </select>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="images" class="form-label">Images (Comma-separated URLs)</label>
+                    <input type="text" class="form-control" id="images" name="images">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="floorplan" class="form-label">Floorplan (Comma-separated URLs)</label>
+                <input type="text" class="form-control" id="floorplan" name="floorplan">
+            </div>
+            <input type="hidden" id="propertyId">
+            <button type="submit" class="btn btn-primary me-2">Save Property</button>
+            <button type="button" class="btn btn-secondary" id="resetForm">Reset</button>
+        </form>
+
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Availability</th>
+                    <th>Description</th>
+                    <th>Images</th>
+                    <th>Floorplan</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="propertyTable">
+                <!-- Data will be populated here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const apiUrl = 'https://srpropertiesbackend.vercel.app/api/commercialproperties'; // Replace with your backend endpoint
+        
+        // Fetch and display properties
+        const fetchProperties = async () => {
+            try {
+                const response = await axios.get(apiUrl);
+                const properties = response.data;
+                const tableBody = document.getElementById('propertyTable');
+                tableBody.innerHTML = '';
+        
+                properties.forEach(property => {
+                    const images = property.images.map(img => `<img src="${img}" alt="Image" class="img-thumbnail" style="width: 80px; height: 80px; margin: 2px;">`).join('');
+                    const floorplans = property.floorplan.map(plan => `<img src="${plan}" alt="Floorplan" class="img-thumbnail" style="width: 80px; height: 80px; margin: 2px;">`).join('');
+        
+                    const row = `<tr>
+                        <td>${property.location}</td>
+                        <td>${property.price}</td>
+                        <td>${property.category}</td>
+                        <td>${property.status}</td>
+                        <td>${property.availability}</td>
+                        <td>${property.description}</td>
+                        <td>${images}</td>
+                        <td>${floorplans}</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning" onclick="editProperty('${property._id}')">Edit</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteProperty('${property._id}')">Delete</button>
+                        </td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            } catch (error) {
+                console.error('Error fetching properties:', error);
+            }
+        };
+        
+        // Add or update property
+        document.getElementById('propertyForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+        
+            const propertyId = document.getElementById('propertyId').value;
+            const propertyData = {
+                location: document.getElementById('location').value,
+                price: document.getElementById('price').value,
+                category: document.getElementById('category').value,
+                status: document.getElementById('status').value,
+                availability: document.getElementById('availability').value,
+                description: document.getElementById('description').value,
+                images: document.getElementById('images').value.split(','),
+                floorplan: document.getElementById('floorplan').value.split(',')
+            };
+        
+            try {
+                if (propertyId) {
+                    await axios.put(`${apiUrl}/${propertyId}`, propertyData);
+                } else {
+                    await axios.post(apiUrl, propertyData);
+                }
+        
+                document.getElementById('propertyForm').reset();
+                fetchProperties();
+            } catch (error) {
+                console.error('Error saving property:', error);
+            }
+        });
+        
+        // Edit property
+        const editProperty = async (id) => {
+            try {
+                const response = await axios.get(`${apiUrl}/${id}`);
+                const property = response.data;
+        
+                document.getElementById('propertyId').value = property._id;
+                document.getElementById('location').value = property.location;
+                document.getElementById('price').value = property.price;
+                document.getElementById('category').value = property.category;
+                document.getElementById('status').value = property.status;
+                document.getElementById('availability').value = property.availability;
+                document.getElementById('description').value = property.description;
+                document.getElementById('images').value = property.images.join(',');
+                document.getElementById('floorplan').value = property.floorplan.join(',');
+            } catch (error) {
+                console.error('Error fetching property:', error);
+            }
+        };
+        
+        // Delete property
+        const deleteProperty = async (id) => {
+            try {
+                await axios.delete(`${apiUrl}/${id}`);
+                fetchProperties();
+            } catch (error) {
+                console.error('Error deleting property:', error);
+            }
+        };
+        
+        // Reset form
+        document.getElementById('resetForm').addEventListener('click', () => {
+            document.getElementById('propertyForm').reset();
+            document.getElementById('propertyId').value = '';
+        });
+        
+        // Initial fetch
+        fetchProperties();
+        </script>
+</body>
+</html>
